@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Find Domains API
+  version: 1.0.0
+  description: API that finds domain
+paths:
+  /api/{text}:
+    get:
+      operationId: api_retrieve
+      parameters:
+      - in: path
+        name: text
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response adada
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
