@@ -4,7 +4,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 
 urlpatterns = [
-    path('<str:text>', views.FindDomainView.as_view(), name='domain'),
+    path('<str:text>', views.FindDomainView.as_view(), name='searcher'),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path(
         'docs/', 

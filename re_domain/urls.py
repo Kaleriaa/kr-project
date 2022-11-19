@@ -3,5 +3,5 @@ from re_domain import views
 
 
 urlpatterns = [
-    path('<str:s>', views.index)
+    path('<str:s>', views.index, name='func')
 ]

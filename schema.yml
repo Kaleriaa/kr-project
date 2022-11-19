@@ -21,7 +21,7 @@ paths:
       - {}
       responses:
         '200':
-          description: No response adada
+          description: Success
 components:
   securitySchemes:
     basicAuth:

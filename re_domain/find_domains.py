@@ -1,4 +1,7 @@
 import re
 
 def find_domains(str):
-    return re.search("@[\w.]+", str).group()
+    founded = re.search("@[\w.]+", str)
+    if (founded == None):
+        return 'Incorrect string'
+    return founded.group()
