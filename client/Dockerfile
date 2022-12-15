@@ -1,4 +1,2 @@
 FROM httpd:2.4
-MAINTAINER shanky@adamtheautomator.com
-COPY index.html /var/www/html/
-EXPOSE 3000
+COPY client/index.html /usr/local/apache2/htdocs/index.html
