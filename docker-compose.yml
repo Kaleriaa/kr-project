@@ -1,13 +1,16 @@
-version: "3.9"
+version: "3"
 services: 
-  docker: 
+  app: 
     build: 
-      context: ./kr-project/
-      dockerfile: Dockerfile 
+      context: .
+      dockerfile: ./kr-project/Dockerfile  
     container_name: django_app 
-    env_file: 
-      - ./kr-project/.env 
+    environment:       
+      - .env 
+    entrypoint: ['uwsgi', 'uwsgi.ini']
     restart: always 
+    volumes:
+      - static_files:${STATIC_ROOT}
 
   nginx: 
     build: 
@@ -15,6 +18,10 @@ services:
       dockerfile: Dockerfile
     container_name: nginx 
     restart: always 
+    volumes:
+      - static_files:${STATIC_PATH_NGINX} 
+    depends_on:
+      - app
 
   front: 
     build: 
@@ -22,5 +29,10 @@ services:
       dockerfile: Dockerfile
     container_name: client_app 
     restart: always
-  
+    depends_on:
+      - app
+      - nginx
+
+volumes:
+  static_files:
  
