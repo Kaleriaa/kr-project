@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 37px;
+        }
+
+        .input {
+            height: 35px;
+            width: 250px;
+            border: 2px solid rgb(190, 138, 138);
+            border-radius: 5px;
+        }
+
+        .submit {
+            height: 35px;
+            border: 2px solid rgb(190, 138, 138);
+            border-radius: 5px;
+            font-size: 14px;
+            color: #fff;
+            width: 150px;
+            background-color: rgb(218, 181, 181);
+        }
+
+        div {
+            margin-top: 15px;
+            padding: 10px;
+            width: 400px;
+            border-radius: 5px;
+            border: 2px solid rgb(190, 138, 138);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Find Domains App</h1>
+    <input type="text" class="input" placeholder="Введите строку" />
+    <button class="submit">Отправить</button>
+    <div class="result"></div>
+
+    <script defer>
+        const button = document.querySelector(".submit")
+        const input = document.querySelector(".input")
+        const resultDiv = document.querySelector('.result')
+
+        button.addEventListener('click', (e) => {
+            fetch(`/api/${input.value}`)
+                .then(res => res.json())
+                .then(data => {
+                    resultDiv.textContent = 'Результат: ' + data
+                })
+
+        })
+    </script>
+</body>
+
+</html>

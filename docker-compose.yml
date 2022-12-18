@@ -20,8 +20,8 @@ services:
     container_name: ${NGINX_SERVER_CONTAINER_NAME}
     environment:
       - .env
-    #ports:
-    #- "80:80"
+    # ports:
+    #   - "80:80"
     volumes:
       - static_files:${STATIC_PATH_NGINX}
     depends_on:
